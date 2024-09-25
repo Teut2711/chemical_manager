@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chemical Supplies</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <div class="chemical-supplies__toolbar">
+    <div class="chemical-supplies__toolbar-heading">
+      <h1 class="chemical-supplies__heading">
+        Chemical Supplies
+      </h1>
+    </div>
+    <div class="chemical-supplies__toolbar-buttons">
+      <button class="chemical-supplies__button chemical-supplies__button-add" aria-label="Add Row">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="chemical-supplies__button chemical-supplies__button-move-up" aria-label="Move Selected Rows Up">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+      <button class="chemical-supplies__button chemical-supplies__button-move-down"
+        aria-label="Move Selected Rows Down">
+        <i class="fas fa-arrow-down"></i>
+      </button>
+      <button class="chemical-supplies__button chemical-supplies__button-delete" aria-label="Delete Checked Rows">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      <button class="chemical-supplies__button chemical-supplies__button-reset" aria-label="Reset">
+        <i class="fas fa-redo-alt"></i>
+      </button>
+      <button class="chemical-supplies__button chemical-supplies__button-save" aria-label="Save Edited State">
+        <i class="fas fa-save"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <table class="chemical-supplies__table">
+
+    <thead class="chemical-supplies__table-header">
+      <tr class="chemical-supplies__table-header-labels">
+        <th class="chemical-supplies__table-header-cell">
+          <input class="chemical-supplies__checkbox" type="checkbox">
+        </th>
+        <th class="chemical-supplies__table-header-cell">Chemical name</th>
+        <th class="chemical-supplies__table-header-cell">Vendor</th>
+        <th class="chemical-supplies__table-header-cell">Density</th>
+        <th class="chemical-supplies__table-header-cell">Viscosity</th>
+        <th class="chemical-supplies__table-header-cell">Packaging</th>
+        <th class="chemical-supplies__table-header-cell">Pack size</th>
+        <th class="chemical-supplies__table-header-cell">Unit</th>
+        <th class="chemical-supplies__table-header-cell">Quantity</th>
+      </tr>
+      <tr class="chemical-supplies__table-header-units">
+        <th class="chemical-supplies__table-header-cell"></th>
+        <th class="chemical-supplies__table-header-cell"></th>
+        <th class="chemical-supplies__table-header-cell"></th>
+        <th class="chemical-supplies__table-header-cell">(g/m³)</th>
+        <th class="chemical-supplies__table-header-cell">(m²/s)</th>
+        <th class="chemical-supplies__table-header-cell"></th>
+        <th class="chemical-supplies__table-header-cell"></th>
+        <th class="chemical-supplies__table-header-cell"></th>
+        <th class="chemical-supplies__table-header-cell"></th>
+      </tr>
+    </thead>
+
+    <tbody class="chemical-supplies__table-body">
+      <!-- JS body injection -->
+
+    </tbody>
+  </table>
+  <template id="chemical-row-template">
+    <tr class="chemical-supplies__body-row">
+      <td class="chemical-supplies__table-body-cell">
+        <input class="chemical-supplies__checkbox" type="checkbox">
+      </td>
+      <td class="chemical-supplies__table-body-cell"></td>
+      <td class="chemical-supplies__table-body-cell"></td>
+      <td class="chemical-supplies__table-body-cell"></td>
+      <td class="chemical-supplies__table-body-cell"></td>
+      <td class="chemical-supplies__table-body-cell"></td>
+      <td class="chemical-supplies__table-body-cell"></td>
+      <td class="chemical-supplies__table-body-cell"></td>
+      <td class="chemical-supplies__table-body-cell"></td>
+    </tr>
+  </template>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

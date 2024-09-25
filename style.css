@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+/* styles.css */
+:root {
+  --font-family-base: 'Roboto', sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-size-heading: 24px;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-normal);
+}
+
+.chemical-supplies__heading {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-heading);
+}
+
+.chemical-supplies__table-header-cell {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-normal);
+}
