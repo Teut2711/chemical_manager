@@ -3,6 +3,28 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import data from "./data.json";
 import HistoryManager from "./history";
 
+const chemicalDataBuilder = function (
+  name = "Unnamed Chemical",
+  vendor = "",
+  density = 0,
+  viscosity = 0,
+  packaging = "N/A",
+  pack_size = 0,
+  unit = "units",
+  quantity = 0
+) {
+  return {
+    name,
+    vendor,
+    density,
+    viscosity,
+    packaging,
+    pack_size,
+    unit,
+    quantity,
+  };
+};
+
 class ChemicalTableManager {
   private tableBody: HTMLElement;
   private chemicals: Chemical[] = [];
@@ -46,9 +68,10 @@ class ChemicalTableManager {
 
   public performDeletes(): void {
     const selectedRows = this.getSelectedRows();
-    for (let i = selectedRows.length - 1; i >= 0; i--) {
+    for (let i = 0; i < selectedRows.length; i++) {
       const index = selectedRows[i];
       this.chemicals.splice(index, 1);
+      this.tableBody.removeChild(this.tableBody.children[index]);
     }
     this.historyManager.saveState(this.chemicals);
     this.renderTable();
@@ -80,9 +103,14 @@ class ChemicalTableManager {
       this.renderTable(); // Re-render the table
     }
   }
+
   public addRow(): void {
-    this.createRow(this.chemicals.length);
+    const newChemical = chemicalDataBuilder() as Chemical;
+    this.tableBody.appendChild(
+      this.createRow(this.chemicals.length, newChemical)
+    );
   }
+
   public getCSV(): string {
     const headers = [
       "Name",
@@ -160,7 +188,6 @@ class ChemicalTableManager {
     cell.setAttribute("contenteditable", "true");
     cell.focus();
   }
-
   private saveChanges(
     cell: HTMLElement,
     cellIndex: number,
@@ -169,31 +196,53 @@ class ChemicalTableManager {
     const newValue = cell.textContent || "";
     cell.removeAttribute("contenteditable");
 
-    // Save the current state to the history manager
-    this.historyManager.saveState(this.chemicals);
-
-    // Update the cell and the chemicals data array with the new value
     switch (cellIndex) {
       case 2: // Vendor
-        this.chemicals[rowIndex].vendor = newValue;
+        if (this.chemicals[rowIndex].vendor !== newValue) {
+          this.chemicals[rowIndex].vendor = newValue;
+        }
         break;
       case 3: // Density
-        this.chemicals[rowIndex].density = parseFloat(newValue);
+        const newDensity = parseFloat(newValue);
+        if (
+          !isNaN(newDensity) &&
+          this.chemicals[rowIndex].density !== newDensity
+        ) {
+          this.chemicals[rowIndex].density = newDensity;
+        }
         break;
       case 4: // Viscosity
-        this.chemicals[rowIndex].viscosity = parseFloat(newValue);
+        const newViscosity = parseFloat(newValue);
+        if (
+          !isNaN(newViscosity) &&
+          this.chemicals[rowIndex].viscosity !== newViscosity
+        ) {
+          this.chemicals[rowIndex].viscosity = newViscosity;
+        }
         break;
       case 5: // Packaging
-        this.chemicals[rowIndex].packaging = newValue;
+        if (this.chemicals[rowIndex].packaging !== newValue) {
+          this.chemicals[rowIndex].packaging = newValue;
+        }
         break;
       case 6: // Pack Size
-        this.chemicals[rowIndex].pack_size = newValue;
+        if (this.chemicals[rowIndex].pack_size !== newValue) {
+          this.chemicals[rowIndex].pack_size = newValue;
+        }
         break;
       case 7: // Unit
-        this.chemicals[rowIndex].unit = newValue;
+        if (this.chemicals[rowIndex].unit !== newValue) {
+          this.chemicals[rowIndex].unit = newValue;
+        }
         break;
       case 8: // Quantity
-        this.chemicals[rowIndex].quantity = parseFloat(newValue);
+        const newQuantity = parseFloat(newValue);
+        if (
+          !isNaN(newQuantity) &&
+          this.chemicals[rowIndex].quantity !== newQuantity
+        ) {
+          this.chemicals[rowIndex].quantity = newQuantity;
+        }
         break;
     }
   }
