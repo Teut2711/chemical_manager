@@ -1,14 +1,11 @@
 interface Chemical {
+  index: number;
   name: string;
   vendor: string;
   density: number;
   viscosity: number;
   packaging: string;
-  pack_size: string;
+  packSize: number;
   unit: string;
   quantity: number;
-}
-
-interface Observer {
-  update(eventType: string, data?: any): void;
 }

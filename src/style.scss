@@ -2,18 +2,27 @@ $color-header-bg: #f4f4f4;
 $color-row-bg: #f9f9f9;
 $color-row-hover: #f1f1f1;
 $border-color: #ddd;
-$font-family: "Arial", sans-serif; // Updated font family
+
+@mixin button-styles($bg-color, $color) {
+  background-color: $bg-color;
+  color: $color;
+
+  &:hover {
+    background-color: $color;
+    color: $bg-color;
+  }
+}
 
 .chemical-supplies {
-  font-family: $font-family;
-  margin: 20px;
+  font-family: inherit;
+  padding: 0 20% 0 20%;
+  background-color: #f8f8f8;
+
   &__toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #f8f8f8;
-    border-bottom: 2px solid #ccc;
 
     &-heading {
       flex: 1;
@@ -23,62 +32,71 @@ $font-family: "Arial", sans-serif; // Updated font family
       display: flex;
       gap: 10px;
     }
-
-    &__button {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: none;
-      background-color: #f1f1f1;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.3s;
-
-      &:hover {
-        background-color: #0a3ca8;
-      }
-
-      &--add {
-        /* Specific styling for add button if needed */
-      }
-      &--move-up {
-        /* Styling for move up button */
-      }
-      &--move-down {
-        /* Styling for move down button */
-      }
-      &--delete {
-        /* Styling for delete button */
-      }
-      &--reset {
-        /* Styling for reset button */
-      }
-      &--save {
-        /* Styling for save button */
+  }
+  &__button {
+    padding: 2%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+    &:focus,
+    &:hover {
+      &:not(:nth-child(1)) {
+        border: 1px solid black; // Apply border to all except the first child
       }
     }
-  }
-  &__title {
-    text-align: left;
-  }
 
+    &-add,
+    &-reset,
+    &-save {
+      @include button-styles(#164ec5, white);
+    }
+    &-move-up,
+    &-move-down {
+      @include button-styles(white, rgb(168, 163, 163));
+    }
+    &-delete {
+      @include button-styles(white, rgb(207, 15, 15));
+    }
+  }
   &__table {
     width: 100%;
-    border-collapse: collapse;
     margin-top: 20px;
-
+    background-color: #f4f4f4;
+    border: 1px solid gray;
     &-header {
       background-color: $color-header-bg;
+      font-weight: bold;
+      text-align: left;
+      border-collapse: collapse;
+      &-labels {
+        color: black;
+      }
+
+      &-units {
+        color: gray;
+      }
+      &-cell-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
     }
 
-    &__header-labels {
-      color: black;
-    }
-
-    &__body-row {
-      border: 1px solid $border-color;
+    &-body {
+      &-cell {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        &:focus {
+          background-color: white;
+          outline: thick double #164ec5;
+        }
+      }
     }
 
     &__header-cell,
@@ -86,24 +104,6 @@ $font-family: "Arial", sans-serif; // Updated font family
       padding: 8px;
       text-align: center;
       color: inherit;
-    }
-
-    &__header-cell {
-      font-weight: bold;
-    }
-
-    &__header-units {
-      color: gray;
-    }
-
-    &__body-row {
-      &:nth-child(even) {
-        background-color: $color-row-bg;
-      }
-
-      &:hover {
-        background-color: $color-row-hover;
-      }
     }
 
     &__checkbox {
@@ -116,4 +116,16 @@ $font-family: "Arial", sans-serif; // Updated font family
       text-align: center;
     }
   }
+}
+.arrow-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.arrow-up,
+.arrow-down {
+  font-size: 1rem;
+  border-radius: 50%;
+  @include button-styles(white, rgb(170, 162, 162));
 }

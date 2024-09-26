@@ -11,7 +11,7 @@ class HistoryManager<T> {
     this.redoStack = OrderedSet();
   }
 
-  saveState(state: T[]): void {
+  async saveState(state: T[]): Promise<void> {
     const serializedState = JSON.stringify(state);
 
     // Add new state directly, OrderedSet will ensure uniqueness
@@ -21,9 +21,7 @@ class HistoryManager<T> {
     if (this.historyStack.size > this.maxStackSize) {
       this.historyStack = this.historyStack.delete(this.historyStack.first());
     }
-
-    // Clear redo stack when a new state is saved
-    this.redoStack = OrderedSet();
+ 
   }
 
   get_previous_state(): T[] | null {

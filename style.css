@@ -12,14 +12,4 @@ body {
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-normal);
 }
-
-.chemical-supplies__heading {
-  font-family: var(--font-family-base);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-heading);
-}
-
-.chemical-supplies__table-header-cell {
-  font-family: var(--font-family-base);
-  font-weight: var(--font-weight-normal);
-}
+ 

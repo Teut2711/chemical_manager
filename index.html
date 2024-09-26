@@ -9,7 +9,7 @@
 
 </head>
 
-<body>
+<body class="chemical-supplies">
   <div class="chemical-supplies__toolbar">
     <div class="chemical-supplies__toolbar-heading">
       <h1 class="chemical-supplies__heading">
@@ -21,11 +21,11 @@
         <i class="fas fa-plus"></i>
       </button>
       <button class="chemical-supplies__button chemical-supplies__button-move-up" aria-label="Move Selected Rows Up">
-        <i class="fas fa-arrow-up"></i>
+        <i class="arrow-up fas fa-arrow-up"></i>
       </button>
       <button class="chemical-supplies__button chemical-supplies__button-move-down"
         aria-label="Move Selected Rows Down">
-        <i class="fas fa-arrow-down"></i>
+        <i class="arrow-down fas fa-arrow-down"></i>
       </button>
       <button class="chemical-supplies__button chemical-supplies__button-delete" aria-label="Delete Checked Rows">
         <i class="fas fa-trash-alt"></i>
@@ -47,14 +47,106 @@
         <th class="chemical-supplies__table-header-cell">
           <input class="chemical-supplies__checkbox" type="checkbox">
         </th>
-        <th class="chemical-supplies__table-header-cell">Chemical name</th>
-        <th class="chemical-supplies__table-header-cell">Vendor</th>
-        <th class="chemical-supplies__table-header-cell">Density</th>
-        <th class="chemical-supplies__table-header-cell">Viscosity</th>
-        <th class="chemical-supplies__table-header-cell">Packaging</th>
-        <th class="chemical-supplies__table-header-cell">Pack size</th>
-        <th class="chemical-supplies__table-header-cell">Unit</th>
-        <th class="chemical-supplies__table-header-cell">Quantity</th>
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Index
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i>
+              </span>
+
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+
+            </div>
+          </div>
+        </th>
+
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Chemical name
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i> </span>
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+            </div>
+          </div>
+
+        </th>
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Vendor
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i> </span>
+
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+
+            </div>
+          </div>
+        </th>
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Density
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i> </span>
+
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+
+            </div>
+          </div>
+        </th>
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Viscosity
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i> </span>
+
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+
+            </div>
+          </div>
+        </th>
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Packaging
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i> </span>
+
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+
+            </div>
+          </div>
+        </th>
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Pack size
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i> </span>
+
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+
+            </div>
+          </div>
+        </th>
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Unit
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i> </span>
+
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+
+            </div>
+          </div>
+        </th>
+        <th class="chemical-supplies__table-header-cell">
+          <div class="chemical-supplies__table-header-cell-content">
+            Quantity
+            <div class="arrow-container">
+              <span class="arrow-up"> <i class="arrow-up fas fa-arrow-up"></i> </span>
+
+              <span class="arrow-down"> <i class="arrow-down fas fa-arrow-down"></i></span>
+
+            </div>
+          </div>
+        </th>
       </tr>
       <tr class="chemical-supplies__table-header-units">
         <th class="chemical-supplies__table-header-cell"></th>
@@ -79,6 +171,7 @@
       <td class="chemical-supplies__table-body-cell">
         <input class="chemical-supplies__checkbox" type="checkbox">
       </td>
+      <td class="chemical-supplies__table-body-cell"></td>
       <td class="chemical-supplies__table-body-cell"></td>
       <td class="chemical-supplies__table-body-cell"></td>
       <td class="chemical-supplies__table-body-cell"></td>
