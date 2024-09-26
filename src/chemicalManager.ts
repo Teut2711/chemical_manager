@@ -2,15 +2,17 @@ import ChemicalBuilder from "./chemicalBuilder";
 import data from "./data.json";
 import HistoryManager from "./historyManager";
 
+type SECONDS = number;
+
 class ChemicalTableManager {
   private tableBody: HTMLElement;
   private chemicals: Chemical[] = [];
   private historyManager: HistoryManager<Chemical>;
-  private autoSaveInterval: number = 5000; // 5 seconds
+  private autoSaveInterval: number = 5 * 1000; // 5 seconds
 
-  constructor(tableBodySelector: string) {
+  constructor(tableBodySelector: string, savePointInterval: SECONDS = 20) {
     this.tableBody = document.querySelector(tableBodySelector)!;
-    this.historyManager = new HistoryManager<Chemical>(30);
+    this.historyManager = new HistoryManager<Chemical>(savePointInterval);
     this.fetchData();
     this.renderTable();
     this.startAutoSave();
@@ -131,7 +133,7 @@ class ChemicalTableManager {
   }
 
   public addRow(): void {
-    const index = this.chemicals.length ;
+    const index = this.chemicals.length;
     const newChemical = new ChemicalBuilder().setIndex(index).build();
     this.chemicals.push(newChemical);
     this.tableBody.appendChild(this.createRow(index, newChemical));
