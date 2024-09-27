@@ -229,17 +229,17 @@ class ChemicalTableManager {
     Array.from(rows).forEach((row, rowIndex) => {
       const cols = row.children as HTMLCollectionOf<HTMLElement>; // Get all columns for each row
 
-      Array.from(cols).forEach((col, colIndex) => {
-        this.saveChanges(col, colIndex, rowIndex); // Pass col, colIndex, and rowIndex
+      Array.from(cols).forEach(async (col, colIndex) => {
+        await this.saveChanges(col, colIndex, rowIndex); // Pass col, colIndex, and rowIndex
       });
     });
   }
 
-  private saveChanges(
+  private async saveChanges(
     cell: HTMLElement,
     cellIndex: number,
     rowIndex: number
-  ): void {
+  ): Promise<void> {
     const newValue = cell.textContent || "";
     cell.removeAttribute("contenteditable");
 

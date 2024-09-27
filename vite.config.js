@@ -1,6 +1,5 @@
-// vite.config.js
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    base: "/chemical_manager/",
+  base: process.env.NODE_ENV === "production" ? "/chemical_manager/" : "/",
 });
