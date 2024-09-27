@@ -15,7 +15,7 @@ class ChemicalTableManager {
     this.historyManager = new HistoryManager<Chemical>(savePointInterval);
     this.fetchData();
     this.renderTable();
-    this.startAutoSave();
+    // this.startAutoSave();
   }
   public performUpShift(): void {
     const selectedRows = this.getSelectedRows();
@@ -212,7 +212,7 @@ class ChemicalTableManager {
       cell.setAttribute("tabindex", "0"); // Make cells focusable
       cell.addEventListener("focus", () => this.makeEditable(cell));
       cell.addEventListener("blur", () =>
-        this.saveChanges(cell, cellIndex, index)
+        this.saveChanges(cell.textContent || "", cellIndex, index)
       );
     });
 
@@ -236,16 +236,13 @@ class ChemicalTableManager {
   }
 
   private async saveChanges(
-    cell: HTMLElement,
+    cellText: string,
     cellIndex: number,
     rowIndex: number
   ): Promise<void> {
-    const newValue = cell.textContent || "";
-    cell.removeAttribute("contenteditable");
-
     switch (cellIndex) {
       case 1: // Index
-        const newIndex = parseInt(newValue) - 1;
+        const newIndex = parseInt(cellText) - 1;
 
         if (this.chemicals[rowIndex].index !== newIndex) {
           this.chemicals[rowIndex].index = newIndex;
@@ -253,18 +250,18 @@ class ChemicalTableManager {
         break;
 
       case 2: // Name
-        if (this.chemicals[rowIndex].name !== newValue) {
-          this.chemicals[rowIndex].name = newValue;
+        if (this.chemicals[rowIndex].name !== cellText) {
+          this.chemicals[rowIndex].name = cellText;
         }
         break;
 
       case 3: // Vendor
-        if (this.chemicals[rowIndex].vendor !== newValue) {
-          this.chemicals[rowIndex].vendor = newValue;
+        if (this.chemicals[rowIndex].vendor !== cellText) {
+          this.chemicals[rowIndex].vendor = cellText;
         }
         break;
       case 4: // Density
-        const newDensity = parseFloat(newValue);
+        const newDensity = parseFloat(cellText);
         if (
           !isNaN(newDensity) &&
           this.chemicals[rowIndex].density !== newDensity
@@ -273,7 +270,7 @@ class ChemicalTableManager {
         }
         break;
       case 5: // Viscosity
-        const newViscosity = parseFloat(newValue);
+        const newViscosity = parseFloat(cellText);
         if (
           !isNaN(newViscosity) &&
           this.chemicals[rowIndex].viscosity !== newViscosity
@@ -282,24 +279,24 @@ class ChemicalTableManager {
         }
         break;
       case 6: // Packaging
-        if (this.chemicals[rowIndex].packaging !== newValue) {
-          this.chemicals[rowIndex].packaging = newValue;
+        if (this.chemicals[rowIndex].packaging !== cellText) {
+          this.chemicals[rowIndex].packaging = cellText;
         }
         break;
       case 7: // Pack Size
-        const newPackSize = parseInt(newValue);
+        const newPackSize = parseInt(cellText);
 
         if (this.chemicals[rowIndex].packSize !== newPackSize) {
           this.chemicals[rowIndex].packSize = newPackSize;
         }
         break;
       case 8: // Unit
-        if (this.chemicals[rowIndex].unit !== newValue) {
-          this.chemicals[rowIndex].unit = newValue;
+        if (this.chemicals[rowIndex].unit !== cellText) {
+          this.chemicals[rowIndex].unit = cellText;
         }
         break;
       case 9: // Quantity
-        const newQuantity = parseFloat(newValue);
+        const newQuantity = parseFloat(cellText);
         if (
           !isNaN(newQuantity) &&
           this.chemicals[rowIndex].quantity !== newQuantity
@@ -308,16 +305,17 @@ class ChemicalTableManager {
         }
         break;
     }
+    this.historyManager.saveState(this.chemicals);
   }
 
-  private startAutoSave(): void {
-    setInterval(() => {
-      Promise.all([
-        this.historyManager.saveState(this.chemicals),
-        this.syncTableDataWithState(),
-      ]);
-    }, this.autoSaveInterval);
-  }
+  // private startAutoSave(): void {
+  //   setInterval(() => {
+  //     Promise.all([
+  //       this.historyManager.saveState(this.chemicals),
+  //       this.syncTableDataWithState(),
+  //     ]);
+  //   }, this.autoSaveInterval);
+  // }
 
   private getSelectedRows(): number[] {
     const selectedIndices: number[] = [];

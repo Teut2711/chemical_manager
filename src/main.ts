@@ -69,16 +69,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // Example: Adding keyboard shortcuts for undo/redo
-  document.addEventListener(
-    "keydown",
-    debounce((event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === "z") {
-        chemicalTable.performUndo();
-      } else if (event.ctrlKey && event.key === "y") {
-        chemicalTable.performRedo();
-      }
-    })
-  );
+  document.addEventListener("keydown", (event: KeyboardEvent) => {
+    // Immediate action for undo/redo
+    if (event.ctrlKey && event.key === "z") {
+      chemicalTable.performUndo();
+    } else if (event.ctrlKey && event.key === "y") {
+      chemicalTable.performRedo();
+    } else {
+      // Debounced save changes for other key presses
+      debounce(() => {
+        const activeCell = document.activeElement as HTMLTableCellElement;
+        const cellIndex = activeCell?.cellIndex as number; // assuming cellIndex is stored here
+        const rowIndex = (activeCell?.parentElement as HTMLTableRowElement)?.rowIndex as number; // assuming rowIndex is stored here
+
+        if (activeCell && cellIndex !== undefined && rowIndex !== undefined) {
+          chemicalTable.saveChanges(activeCell.textContent, cellIndex, rowIndex);
+        }
+      })();
+    }
+  });
+
 
   document
     .querySelector(
