@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const rowIndex = (activeCell?.parentElement as HTMLTableRowElement)?.rowIndex as number; // assuming rowIndex is stored here
 
         if (activeCell && cellIndex !== undefined && rowIndex !== undefined) {
-          chemicalTable.saveChanges(activeCell.textContent, cellIndex, rowIndex);
+          chemicalTable.saveChanges(activeCell.textContent || "", cellIndex, rowIndex);
         }
       })();
     }
