@@ -82,3 +82,7 @@ npm run dev
 ### License
 
 This project is open source and available under the MIT License.
+
+### Acknowledgment
+
+This code was developed with assistance from ChatGPT, an AI language model created by OpenAI. ChatGPT was used to help with generating ideas, debugging, and optimizing code logic throughout the development process.
