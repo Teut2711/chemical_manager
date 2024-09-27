@@ -223,19 +223,8 @@ class ChemicalTableManager {
     cell.setAttribute("contenteditable", "true");
     cell.focus();
   }
-  private async syncTableDataWithState(): Promise<void> {
-    const rows = this.tableBody.children as HTMLCollectionOf<HTMLElement>; // Get all row elements
 
-    Array.from(rows).forEach((row, rowIndex) => {
-      const cols = row.children as HTMLCollectionOf<HTMLElement>; // Get all columns for each row
-
-      Array.from(cols).forEach(async (col, colIndex) => {
-        await this.saveChanges(col, colIndex, rowIndex); // Pass col, colIndex, and rowIndex
-      });
-    });
-  }
-
-  private async saveChanges(
+  public async saveChanges(
     cellText: string,
     cellIndex: number,
     rowIndex: number
@@ -308,18 +297,8 @@ class ChemicalTableManager {
     this.historyManager.saveState(this.chemicals);
   }
 
-  // private startAutoSave(): void {
-  //   setInterval(() => {
-  //     Promise.all([
-  //       this.historyManager.saveState(this.chemicals),
-  //       this.syncTableDataWithState(),
-  //     ]);
-  //   }, this.autoSaveInterval);
-  // }
-
   private getSelectedRows(): number[] {
     const selectedIndices: number[] = [];
-    console.log("Selected indices: " + JSON.stringify(selectedIndices));
 
     this.tableBody
       .querySelectorAll<HTMLInputElement>(".chemical-supplies__checkbox")
