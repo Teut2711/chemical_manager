@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .querySelector(".chemical-supplies__button-reset")!
     .addEventListener("click", () => {
-      // Implement reset logic here
+      chemicalTable.performReset();
     });
   document
     .querySelector(".chemical-supplies__button-save")!
@@ -62,33 +62,30 @@ document.addEventListener("DOMContentLoaded", () => {
       URL.revokeObjectURL(url);
     });
 
-  document
-    .querySelector(".chemical-supplies__button-reset")!
-    .addEventListener("click", () => {
-      chemicalTable.performReset();
-    });
-
-  // Example: Adding keyboard shortcuts for undo/redo
-  document.addEventListener("keydown", (event: KeyboardEvent) => {
-    // Immediate action for undo/redo
-    if (event.ctrlKey && event.key === "z") {
-      chemicalTable.performUndo();
-    } else if (event.ctrlKey && event.key === "y") {
-      chemicalTable.performRedo();
-    } else {
-      // Debounced save changes for other key presses
-      debounce(() => {
+  document.addEventListener(
+    "keydown",
+    debounce((event: KeyboardEvent) => {
+      // Immediate action for undo/redo
+      if (event.ctrlKey && event.key === "z") {
+        chemicalTable.performUndo();
+      } else if (event.ctrlKey && event.key === "y") {
+        chemicalTable.performRedo();
+      } else {
         const activeCell = document.activeElement as HTMLTableCellElement;
         const cellIndex = activeCell?.cellIndex as number; // assuming cellIndex is stored here
-        const rowIndex = (activeCell?.parentElement as HTMLTableRowElement)?.rowIndex as number; // assuming rowIndex is stored here
+        const rowIndex = (activeCell?.parentElement as HTMLTableRowElement)
+          ?.rowIndex as number; // assuming rowIndex is stored here
 
         if (activeCell && cellIndex !== undefined && rowIndex !== undefined) {
-          chemicalTable.saveChanges(activeCell.textContent || "", cellIndex, rowIndex);
+          chemicalTable.saveChanges(
+            activeCell.textContent || "",
+            cellIndex,
+            rowIndex
+          );
         }
-      })();
-    }
-  });
-
+      }
+    })
+  );
 
   document
     .querySelector(
