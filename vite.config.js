@@ -8,7 +8,9 @@ export default defineConfig({
       registerType: "autoUpdate",
       manifest: [
         {
-          icons: [{ type: "image/png", name: "chemical-flask.png" , size:"512X512"}],
+          icons: [
+            { type: "image/png", src: "/chemical-flask.png", size: "512X512" },
+          ],
         },
       ],
     }),
