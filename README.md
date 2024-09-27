@@ -12,7 +12,7 @@ This project provides an interactive web application for managing a list of chem
 * **Undo/Redo:** Undo and redo actions for managing changes.
 * **Sorting:** Sort columns by clicking the header arrows with ascending/descending options.
 * **CSV Export:** Download the table data as a CSV file for further analysis.
-* **Auto-Save:** The table state is automatically saved every 5 seconds to prevent data loss.
+* **Auto-Save:** The table state is automatically saved every 20 seconds to prevent data loss.
 
 ### Table Structure
 
