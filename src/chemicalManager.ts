@@ -8,7 +8,6 @@ class ChemicalTableManager {
   private tableBody: HTMLElement;
   private chemicals: Chemical[] = [];
   private historyManager: HistoryManager<Chemical>;
-  private autoSaveInterval: number = 5 * 1000; // 5 seconds
 
   constructor(tableBodySelector: string, savePointInterval: SECONDS = 20) {
     this.tableBody = document.querySelector(tableBodySelector)!;
