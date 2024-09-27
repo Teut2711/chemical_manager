@@ -6,13 +6,22 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: "autoUpdate",
-      manifest: [
-        {
-          icons: [
-            { type: "image/png", src: "/chemical-flask.png", size: "512X512" },
-          ],
-        },
-      ],
+      manifest: {
+        name: "Chemical Manager",
+        short_name: "ChemManager",
+        description: "Manage your chemical supplies efficiently.",
+        start_url: "/",
+        display: "standalone",
+        background_color: "#ffffff",
+        theme_color: "#ffffff",
+        icons: [
+          {
+            src: "/chemical-flask.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
     }),
   ],
 });
