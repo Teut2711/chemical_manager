@@ -2,6 +2,15 @@ import "./style.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import ChemicalTableManager from "./chemicalManager";
 
+function debounce(func: (event: KeyboardEvent) => void, delay: number = 300) {
+  let timeout: ReturnType<typeof setTimeout>;
+
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(func, delay);
+  };
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const chemicalTable = new ChemicalTableManager(
     ".chemical-supplies__table-body"
@@ -60,13 +69,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // Example: Adding keyboard shortcuts for undo/redo
-  document.addEventListener("keydown", (event: KeyboardEvent) => {
-    if (event.ctrlKey && event.key === "z") {
-      chemicalTable.performUndo();
-    } else if (event.ctrlKey && event.key === "y") {
-      chemicalTable.performRedo();
-    }
-  });
+  document.addEventListener(
+    "keydown",
+    debounce((event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "z") {
+        chemicalTable.performUndo();
+      } else if (event.ctrlKey && event.key === "y") {
+        chemicalTable.performRedo();
+      }
+    })
+  );
 
   document
     .querySelector(
