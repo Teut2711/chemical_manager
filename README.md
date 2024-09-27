@@ -9,10 +9,10 @@ This project provides an interactive web application for managing a list of chem
 * **Row Selection:** Select rows using checkboxes for batch actions.
 * **Reorder Rows:** Move selected rows up or down in the table.
 * **Delete Rows:** Remove selected rows from the table.
-* **Undo/Redo:** Undo and redo actions for managing changes.
+* **Undo/Redo:** Undo and redo actions for managing changes( is slighly buggy ).
 * **Sorting:** Sort columns by clicking the header arrows with ascending/descending options.
 * **CSV Export:** Download the table data as a CSV file for further analysis.
-* **Auto-Save:** The table state is automatically saved every 20 seconds to prevent data loss.
+* **Auto-Save:** The table state is automatically saved on every keystroke with some delay.
 
 ### Table Structure
 
@@ -78,11 +78,7 @@ npm run dev
 * **Reordering:** Select rows using checkboxes, then use the "Move Up" and "Move Down" buttons to reorder the rows.
 * **Undo/Redo:** Use the undo and redo buttons to revert or reapply changes.
 * **Exporting Data:** Click "Save as CSV" to download the table contents in CSV format.
-
-### Contributing
-
-We welcome pull requests! Please ensure your code follows the existing style and conventions (BEM for class names, TypeScript for logic).
-
+ 
 ### License
 
 This project is open source and available under the MIT License.

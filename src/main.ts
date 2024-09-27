@@ -3,6 +3,11 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import ChemicalTableManager from "./chemicalManager";
 
 function debounce(func: (event: KeyboardEvent) => void, delay: number = 300) {
+  /*
+  Source:
+  https://decipher.dev/30-seconds-of-typescript/docs/debounce/
+  */
+
   let timeout: ReturnType<typeof setTimeout>;
 
   return () => {
@@ -12,7 +17,7 @@ function debounce(func: (event: KeyboardEvent) => void, delay: number = 300) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const chemicalTable = new ChemicalTableManager(
+  const chemicalManager = new ChemicalTableManager(
     ".chemical-supplies__table-body"
   );
 
@@ -20,36 +25,41 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .querySelector(".chemical-supplies__button-add")!
     .addEventListener("click", () => {
-      chemicalTable.addRow();
+      chemicalManager.addRow();
     });
 
   document
     .querySelector(".chemical-supplies__button-move-up")!
     .addEventListener("click", () => {
-      chemicalTable.performUpShift();
+      chemicalManager.performUpShift();
     });
 
   document
     .querySelector(".chemical-supplies__button-move-down")!
     .addEventListener("click", () => {
-      chemicalTable.performDownShift();
+      chemicalManager.performDownShift();
     });
 
   document
     .querySelector(".chemical-supplies__button-delete")!
     .addEventListener("click", () => {
-      chemicalTable.performDeletes();
+      chemicalManager.performDeletes();
     });
 
   document
     .querySelector(".chemical-supplies__button-reset")!
     .addEventListener("click", () => {
-      chemicalTable.performReset();
+      chemicalManager.performReset();
     });
   document
     .querySelector(".chemical-supplies__button-save")!
     .addEventListener("click", () => {
-      const csvStr = chemicalTable.getCSV();
+      /*
+      Source:
+      https://stackoverflow.com/a/14966131/4213362
+      */
+
+      const csvStr = chemicalManager.getCSV();
       const blob = new Blob([csvStr], { type: "text/csv" });
       const url = URL.createObjectURL(blob);
 
@@ -67,9 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
     debounce((event: KeyboardEvent) => {
       // Immediate action for undo/redo
       if (event.ctrlKey && event.key === "z") {
-        chemicalTable.performUndo();
+        chemicalManager.performUndo();
       } else if (event.ctrlKey && event.key === "y") {
-        chemicalTable.performRedo();
+        chemicalManager.performRedo();
       } else {
         const activeCell = document.activeElement as HTMLTableCellElement;
         const cellIndex = activeCell?.cellIndex as number; // assuming cellIndex is stored here
@@ -77,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ?.rowIndex as number; // assuming rowIndex is stored here
 
         if (activeCell && cellIndex !== undefined && rowIndex !== undefined) {
-          chemicalTable.saveChanges(
+          chemicalManager.saveChanges(
             activeCell.textContent || "",
             cellIndex,
             rowIndex
@@ -94,9 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ?.addEventListener("change", (e) => {
       const checkbox = e.target as HTMLInputElement;
       if (checkbox.checked) {
-        chemicalTable.selectAllRows();
+        chemicalManager.selectAllRows();
       } else {
-        chemicalTable.deselectAllRows();
+        chemicalManager.deselectAllRows();
       }
     });
 
@@ -107,10 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (target.classList.contains("arrow-up")) {
         let headerCell = target.closest("th") as HTMLTableCellElement;
-        chemicalTable.sortBy(headerCell.cellIndex, "asc");
+        chemicalManager.sortBy(headerCell.cellIndex, "asc");
       } else if (target.classList.contains("arrow-down")) {
         let headerCell = target.closest("th") as HTMLTableCellElement;
-        chemicalTable.sortBy(headerCell.cellIndex, "desc");
+        chemicalManager.sortBy(headerCell.cellIndex, "desc");
       }
     });
 });
