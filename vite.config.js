@@ -10,10 +10,10 @@ export default defineConfig({
         
         icons: [
           {
-            src: "/chemical-flask.png",
+            src: "chemical-flask.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "chemical management",
+            purpose: "any maskable",
           },
         ],
       },
