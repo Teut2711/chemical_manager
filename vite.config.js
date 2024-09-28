@@ -7,6 +7,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
+        id: "/chemical_manager/",
         icons: [
           {
             src: "windows11/SmallTile.scale-100.png",
@@ -291,15 +292,12 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            form_factor: "wide",
-
             src: "screenshot-1080x1920.png",
             sizes: "1080x1920",
             type: "image/png",
             label: "Chemical Manager",
           },
           {
-            form_factor: "narrow",
             src: "screenshot-390X844.png",
             sizes: "390X844",
             type: "image/png",
