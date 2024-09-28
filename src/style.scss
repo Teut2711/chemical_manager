@@ -15,7 +15,7 @@ $border-color: #ddd;
 
 .chemical-supplies {
   font-family: inherit;
-  padding: 0 20% 0 20%;
+  padding: 0 10% 0 10%;
   background-color: #f8f8f8;
 
   &__toolbar {
@@ -23,6 +23,7 @@ $border-color: #ddd;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    flex-wrap: wrap;
 
     &-heading {
       flex: 1;
