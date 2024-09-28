@@ -294,7 +294,7 @@ export default defineConfig({
             form_factor: "wide",
 
             src: "screenshot.png",
-            sizes: "1080x1920",
+            sizes: "1350x2400",
             type: "image/png",
             label: "Chemical Manager",
           },
