@@ -291,8 +291,8 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: "chemical-flask.png",
-            sizes: "512X512",
+            src: "screenshot.png",
+            sizes: "1080x1920",
             type: "image/png",
             label: "Chemical Manager",
           },
@@ -301,3 +301,4 @@ export default defineConfig({
     }),
   ],
 });
+// Reference: Making Screenshots Easy on PWABuilder - https://medium.com/pwabuilder/making-screenshots-easy-on-pwabuilder-5cc25343cfa6
