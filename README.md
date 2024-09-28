@@ -86,3 +86,16 @@ This project is open source and available under the MIT License.
 ### Acknowledgment
 
 This code was developed with assistance from ChatGPT, an AI language model created by OpenAI. ChatGPT was used to help with generating ideas, debugging, and optimizing code logic throughout the development process.
+
+
+
+### PWA
+
+1.  Mobile
+![Chrome > Add to home screen](https://github.com/user-attachments/assets/18edc9a0-88ba-4883-8a40-58231dc9bd9a)
+
+2. Desktop
+
+![Chrome](https://github.com/user-attachments/assets/4e99a555-604a-413f-9114-46e4d030bb91)
+
+
