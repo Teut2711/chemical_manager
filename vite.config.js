@@ -19,6 +19,7 @@ export default defineConfig({
             src: "/chemical-flask.png",
             sizes: "512x512",
             type: "image/png",
+            purpose: "chemical management",
           },
         ],
       },
