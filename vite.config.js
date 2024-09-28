@@ -291,8 +291,17 @@ export default defineConfig({
         ],
         screenshots: [
           {
+            form_factor: "wide",
+
             src: "screenshot.png",
             sizes: "1080x1920",
+            type: "image/png",
+            label: "Chemical Manager",
+          },
+          {
+            form_factor: "narrow",
+            src: "screenshot-390X844.png",
+            sizes: "390X844",
             type: "image/png",
             label: "Chemical Manager",
           },
