@@ -17,6 +17,8 @@ export default defineConfig({
         ],
         screenshots: [
           {
+            form_factor: "wide",
+
             src: "chemical-flask.png",
             sizes: "512X512",
             type: "image/png",
