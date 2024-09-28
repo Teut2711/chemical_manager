@@ -7,13 +7,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "Chemical Manager",
-        short_name: "ChemManager",
-        description: "Manage your chemical supplies efficiently.",
-        start_url: "/",
-        display: "standalone",
-        background_color: "#ffffff",
-        theme_color: "#ffffff",
+        
         icons: [
           {
             src: "/chemical-flask.png",
