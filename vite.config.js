@@ -7,13 +7,20 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        
         icons: [
           {
             src: "chemical-flask.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
+          },
+        ],
+        screenshots: [
+          {
+            src: "chemical-flask.png",
+            sizes: "512X512",
+            type: "image/png",
+            label: "Chemical Manager",
           },
         ],
       },
