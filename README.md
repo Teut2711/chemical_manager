@@ -68,7 +68,7 @@ npm run dev
 ```
 
 5. **Open in Browser:** 
-   Navigate to http://localhost:3000 in your web browser to interact with the Chemical Supplies Table.
+   Navigate to [Chemical Manager](https://teut2711.github.io/chemical_manager/) in your web browser to interact with the Chemical Supplies Table.
 
 ### Usage
 
